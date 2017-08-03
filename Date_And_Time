@@ -1,0 +1,18 @@
+"""
+how to print actual date and time
+https://docs.python.org/2/library/datetime.html#
+"""
+
+import datetime
+
+today = datetime.datetime.today()
+
+print(today)
+print(today.strftime('%Y %m %d'))
+print(today.strftime('%Y'))
+print(today.strftime('%m'))
+print(today.strftime('%d'))
+print(today.strftime('%a'))
+print(today.strftime('%A'))
+print(today.strftime('%H'))
+print(today.strftime('%M'))
