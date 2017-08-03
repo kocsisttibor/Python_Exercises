@@ -1,0 +1,19 @@
+"""
+Practice Python 19 - Decode A Web Page Two
+http://www.practicepython.org/exercise/2014/07/14/19-decode-a-web-page-two.html
+
+Using the requests and BeautifulSoup Python libraries, print to the screen the full text of the article on this website: http://www.vanityfair.com/society/2014/06/monica-lewinsky-humiliation-culture.
+"""
+
+import requests
+from bs4 import BeautifulSoup
+
+def getArticle(x):
+    article = requests.get(x)
+    soup = BeautifulSoup(article.text,"html.parser")
+
+    for line in soup.find_all('p'):
+        if str(line.string) != "None":
+            print(line.string)
+
+getArticle('http://www.vanityfair.com/style/society/2014/06/monica-lewinsky-humiliation-culture')
