@@ -1,0 +1,23 @@
+"""
+Practice Python 20 - Element Search
+http://www.practicepython.org/exercise/2014/11/11/20-element-search.html
+
+Write a function that takes an ordered list of numbers (a list where the elements are in order from smallest to largest) and another number. The function decides whether or not the given number is inside the list and returns (then prints) an appropriate boolean.
+
+Extras:
+
+Use binary search.
+"""
+
+
+def in_the_list (user_list, user_number):
+  if user_number in user_list:
+    print("Yes")
+  else:
+    print("False")
+
+  
+x = input("Give me a list of numbers: ")
+y = input("Give me a number: ")
+
+in_the_list(x, y)
