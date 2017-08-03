@@ -1,0 +1,53 @@
+"""
+Practice Python 09 - Guessing Game One
+http://www.practicepython.org/exercise/2014/04/02/09-guessing-game-one.html
+
+Generate a random number between 1 and 9 (including 1 and 9). Ask the user to guess the number, then tell them whether they guessed too low, too high, or exactly right. (Hint: remember to use the user input lessons from the very first exercise)
+
+Extras:
+
+Keep the game going until the user types “exit”
+Keep track of how many guesses the user has taken, and when the game ends, print this out.
+"""
+
+from random import randint
+import re     # regular expressions; to check wether user_number is a number
+
+answer = ""
+count = 0
+
+while exit != "exit":
+  generated_number = randint(1,9)
+
+# other option to use randint: 
+# import random
+# generated_number = random.randint(1.9)
+
+  user_number = input("Enter a number between 1-9: ")
+  pattern = r"\D"     # \D is inverse of \d which is a sign for digits
+  empty_string = ""
+  
+  while user_number == empty_string:      #to filter the plays, when the user doesn't give any character
+    user_number = input("Enter a number between 1-9: ")
+  
+  while re.match(pattern,user_number):
+    user_number = input("Enter a number between 1-9: ")
+    
+# other option to force user_number being an integer:
+# try:
+#   value = int(user_number)
+# except ValueError:
+#   user_number = input("Enter a number between 1-9: ")
+    
+  count += 1
+  
+  if generated_number < int(user_number):
+    print("Your guess is too high.")
+  elif generated_number > int(user_number):
+    print("Your guess is too low.")
+  else:
+    print("Your guess is equal to the randomly generated number.")
+
+  answer = input("To finish the game, please type \"exit\"")
+
+print("You played " + str(count) + " times. Thank you!")
