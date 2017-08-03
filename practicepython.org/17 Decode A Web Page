@@ -1,0 +1,25 @@
+"""
+Practice Python 17 - Decode A Web Page
+http://www.practicepython.org/exercise/2014/06/06/17-decode-a-web-page.html
+
+Use the BeautifulSoup and requests Python packages to print out a list of all the article titles on the New York Times homepage.
+
+To install requests and BeautifulSoup this worked for me:
+go to idle and type "for p in sys.path:" then click enter and type "print (p)" and click enter, my path is "C:\Users\c\AppData\Local\Programs\Python\Python36-32\Scripts". Go to cmd and type "cd "C:\pathway"" and click enter.
+
+After this, you should be able to use pip3.6 by going "pip3.6 install -package name-".
+
+"""
+
+import requests
+from bs4 import BeautifulSoup
+ 
+base_url = 'http://www.index.hu'
+r = requests.get(base_url)
+soup = BeautifulSoup(r.text)
+ 
+for story_heading in soup.find_all(class_="story-heading"): 
+    if story_heading.a: 
+        print(story_heading.a.text.replace("\n", " ").strip())
+    else: 
+        print(story_heading.contents[0].strip())
