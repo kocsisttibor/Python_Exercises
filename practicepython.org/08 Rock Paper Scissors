@@ -1,0 +1,45 @@
+"""
+Practice Python 08 - Rock Paper Scissors
+http://www.practicepython.org/exercise/2014/03/26/08-rock-paper-scissors.html
+
+Make a two-player Rock-Paper-Scissors game. (Hint: Ask for player plays (using input), compare them, print out a message of congratulations to the winner, and ask if the players want to start a new game)
+"""
+
+playagain = "yes"
+while playagain == "yes":
+  options = ["rock", "paper", "scissors"]
+  playerA = input("Player A, please choose from Rock-Paper-Scissors")
+  playerA = playerA.lower()
+  while playerA not in options:
+    print("You need to choose only from Rock-Paper-Scissors")
+    playerA = input("Player A, please choose from Rock-Paper-Scissors")
+    playerA = playerA.lower()
+  playerB = input("Player B, please choose from Rock-Paper-Scissors")
+  playerB = playerB.lower()
+  while playerB not in options:
+    print("You need to choose only from Rock-Paper-Scissors")
+    playerB = input("Player B, please choose from Rock-Paper-Scissors")
+    playerB = playerB.lower()
+  
+  if playerA == "rock":
+    if playerB == "rock":
+      print("Tie! You both chose rock.")
+    elif playerB == "scissors":
+      print("Player A, you won!")
+    else:
+      print("Player B, you won!")
+  elif playerA == "scissors":
+    if playerB == "scissors":
+      print("Tie! You both chose scissors.")
+    elif playerB == "paper":
+      print("Player A, you won!")
+    else: 
+      print("Player B, you won!")
+  else:
+    if playerB == "paper":
+      print("Tie! You both chose paper.")
+    elif playerB == "rock":
+      print("Player A, you won!")
+    else:
+      print("Player B, you won!")
+  playagain = input("Do you want to play again (yes/no)?")
