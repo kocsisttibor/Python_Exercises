@@ -1,0 +1,25 @@
+"""
+Practice Python 23 - File Overlap
+http://www.practicepython.org/exercise/2014/12/14/23-file-overlap.html
+
+Given two .txt files that have lists of numbers in them, find the numbers that are overlapping. One .txt file has a list of all prime numbers under 1000, and the other .txt file has a list of happy numbers up to 1000.
+"""
+
+path1 = "C:/Kocsis Tibor C/Private/Python kódok/numbers1.txt"
+path2 = "C:/Kocsis Tibor C/Private/Python kódok/numbers2.txt"
+
+with open(path1, "r") as file1:
+    numbers1 = file1.readlines()
+    numbers1 = [x.strip() for x in numbers1]
+
+with open(path2, "r") as file2:
+    numbers2 = file2.readlines()
+    numbers2 = [x.strip() for x in numbers2]
+
+common = []
+
+for i in numbers1:
+    if i in numbers2:
+        common.append(i)
+
+print(common)
