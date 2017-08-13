@@ -1,0 +1,114 @@
+"""
+Practice Python 29 - Tic Tac Toe Game
+http://www.practicepython.org/exercise/2016/08/03/29-tic-tac-toe-game.html
+
+In 3 previous exercises, we built up a few components needed to build a Tic Tac Toe game in Python:
+
+Draw the Tic Tac Toe game board
+Checking whether a game board has a winner
+Handle a player move from user input
+The next step is to put all these three components together to make a two-player Tic Tac Toe game! Your challenge in this exercise is to use the functions from those previous exercises all together in the same program to make a two-player game that you can play with a friend. There are a lot of choices you will have to make when completing this exercise, so you can go as far or as little as you want with it.
+
+Here are a few things to keep in mind:
+
+You should keep track of who won - if there is a winner, show a congratulatory message on the screen.
+If there are no more moves left, don’t ask for the next player’s move!
+As a bonus, you can ask the players if they want to play again and keep a running tally of who won more - Player 1 or Player 2.
+"""
+
+
+def print_board(grid):
+  print(3 * " ---")
+  for i in range(len(grid)):
+    print("| " + grid[i][0] + " | " + grid[i][1] + " | "+ grid[i][2] + " |")
+    print(3 * " ---")
+
+def vertical (grid):
+  for i in range(len(grid)):
+    row = set(grid[i])
+    if len(row) == 1 and grid[i][0] != " ":
+      return(grid[i][0])
+
+def horizontal (grid):
+  for i in range(len(grid[0])):
+    coloumn = []
+    for j in range(len(grid)):
+      coloumn.append(grid[j][i])
+    if len(set(coloumn)) == 1 and grid[0][i] != " ":
+      return(grid[0][i])
+
+def diagonal (grid):
+  diagonal = []
+  diagonal2 = []
+  for i in range(len(grid)):
+    for j in range(len(grid[0])):
+      if i == j:
+        diagonal.append(grid[i][j])
+      if i + j == len(grid[0]) - 1:
+        diagonal2.append(grid[i][j])
+  if len(set(diagonal)) == 1 and grid[0][0] != " ":
+    return(grid[0][0])
+  elif len(set(diagonal2)) == 1 and grid[0][len(grid[0]) - 1] != " ":
+    return(grid[0][len(grid[0]) - 1])
+
+def check (grid):
+  if vertical(grid) == None and horizontal(grid) == None and diagonal(grid) == None:
+    return False
+  else:
+    return True
+
+def winner (grid):
+  if vertical(grid) == None:
+    if horizontal(grid) == None:
+      if diagonal(grid) == None:
+        print("\nThere is no winner.")
+      else:
+        print("\nThe winner is: %s Congrats!" %diagonal(grid))
+    else:
+      print("\nThe winner is: %s Congrats!" %horizontal(grid))
+  else:
+    print("\nThe winner is: %s Congrats!" %vertical(grid))
+
+while True:
+  board = [[" ", " ", " "],
+         [" ", " ", " "],
+	       [" ", " ", " "]]
+  count = 0
+  
+  print("Welcome to TicTacToe Game! Here is the board: \n")
+  print_board(board)
+  print("\nRows and coloumns start to count at 0.")
+  
+  while count != 9:
+    player_one = list(input("\nPlayer 1, it's your turn! Please enter your coordinates in row,col format:").split(","))
+    while board[int(player_one[0])][int(player_one[1])] != " ":
+      print("That position is just taken.")
+      player_one = list(input("\nPlayer 1, please enter your coordinates in row,col format:").split(","))
+    board[int(player_one[0])][int(player_one[1])] = "X"
+    count += 1
+
+    print("Thank you! Here is the board again: \n")
+    print_board(board)
+  
+    if check(board) == True:
+      break
+    if count == 9:
+      break
+  
+    player_two = list(input("\nPlayer 2, it's your turn! Please enter your coordinates in row,col format:").split(","))
+    while board[int(player_two[0])][int(player_two[1])] != " ":
+      print("That position is just taken.")
+      player_two = list(input("\nPlayer 2, please enter your coordinates in row,col format:").split(","))
+    board[int(player_two[0])][int(player_two[1])] = "O"
+    count += 1
+    
+    print("Thank you! Here is the board again: \n")
+    print_board(board)
+  
+    if check(board) == True:
+      break
+
+  winner(board)
+  if input("Do you want to play again? (Y/N) ") == "N":
+    print("\nThanks for the game!")
+    break
