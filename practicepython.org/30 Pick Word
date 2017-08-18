@@ -15,10 +15,9 @@ with open("C:\Python 3.6\Saját kódok, file-ok/sowpods.txt", "r") as source:
 print(sowpods[random.randint(1, len(sowpods))])
 
 
-"""
-shorter version
+# shorter version
 
 with open('sowpods.txt') as f:
 	words = list(f)
 print(random.choice(words).strip())
-"""
+
