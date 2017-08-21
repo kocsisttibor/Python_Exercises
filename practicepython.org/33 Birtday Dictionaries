@@ -1,0 +1,17 @@
+"""
+Practice Python 33 - Birthday Dictionaries
+http://www.practicepython.org/exercise/2017/01/24/33-birthday-dictionaries.html
+
+This exercise is Part 1 of 4 of the birthday data exercise series. The other exercises are: Part 2, Part 3, and Part 4.
+
+For this exercise, we will keep track of when our friend’s birthdays are, and be able to find that information based on their name. Create a dictionary (in your file) of names and birthdays. When you run your program it should ask the user to enter a name, and return the birthday of that person back to them. 
+"""
+
+birthdays = {"Anna":"1978.11.22.", "Frank":"1981.11.20.", "Gabriel":"1979.10.22"}
+
+print("\nWelcome to Birtday Dictionary!\nThe Dictionary contains the following people:")
+for i in birthdays.keys():
+  print(i)
+
+user_request = input("Whose birtday are you looking for?")
+print("{}'s birthday is: {}".format(user_request, birthdays.get(user_request)))
