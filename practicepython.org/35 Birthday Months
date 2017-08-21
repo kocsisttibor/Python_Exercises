@@ -1,0 +1,34 @@
+"""
+Practice Python 35 - Birthday Months
+http://www.practicepython.org/exercise/2017/02/28/35-birthday-months.html
+
+This exercise is Part 3 of 4 of the birthday data exercise series. The other exercises are: Part 1, Part 2, and Part 4.
+
+In the previous exercise we saved information about famous scientists’ names and birthdays to disk. In this exercise, load that JSON file from disk, extract the months of all the birthdays, and count how many scientists have a birthday in each month.
+"""
+
+import json
+
+
+# birthdays = {
+#     "Anna":"1978.11.22.", 
+#     "Frank":"1981.11.20.", 
+#     "Gabriel":"1979.10.22"}
+
+# with open("C:/Python 3.6/Saját kódok, file-ok/birthdays.json", "w") as f:
+#     json.dump(birthdays, f)
+
+
+with open("C:/Python 3.6/Saját kódok, file-ok/birthdays.json", "r") as f:
+    reloaded_dictionary = json.load(f)
+
+months = []
+query = {}
+
+for i in reloaded_dictionary.values():
+    months.append(i[5:7])
+
+for i in set(months):
+    query[i] = months.count(i)
+
+print(query)
